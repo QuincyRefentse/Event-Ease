@@ -1,0 +1,120 @@
+﻿@*
+@model EventEase.Models.Event
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Event</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EventName" class="control-label"></label>
+                <input asp-for="EventName" class="form-control" />
+                <span asp-validation-for="EventName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventDate" class="control-label"></label>
+                <input asp-for="EventDate" class="form-control" />
+                <span asp-validation-for="EventDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VenueId" class="control-label"></label>
+                <select asp-for="VenueId" class ="form-control" asp-items="ViewBag.VenueId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@
+
+                @model EventEase.Models.Event
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h1 class="text-center my-4">Create a New Event</h1>
+
+    <h4 class="text-center text-secondary">Event Information</h4>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <!-- Validation Summary -->
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+              
+
+                <!-- Event Name -->
+                <div class="form-group">
+                    <label asp-for="EventName" class="control-label"></label>
+                    <input asp-for="EventName" class="form-control" />
+                    <span asp-validation-for="EventName" class="text-danger"></span>
+                </div>
+
+                <!-- Event Date -->
+                <div class="form-group">
+                    <label asp-for="EventDate" class="control-label"></label>
+                    <input asp-for="EventDate" class="form-control" type="date" />
+                    <span asp-validation-for="EventDate" class="text-danger"></span>
+                </div>
+
+                <!-- Event Description -->
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- Venue Selection (nullable) -->
+                <div class="form-group">
+                    <label asp-for="VenueId" class="control-label"></label>
+                    <select asp-for="VenueId" class="form-control" asp-items="ViewBag.VenueId">
+                        <option value="">-- Select Venue --</option>
+                    </select>
+                    <span asp-validation-for="VenueId" class="text-danger"></span>
+                </div>
+
+
+                <!-- Submit Button -->
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to List Link -->
+    <div class="text-center mt-4">
+        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

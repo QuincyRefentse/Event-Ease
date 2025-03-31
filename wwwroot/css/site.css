@@ -1,0 +1,111 @@
+/* General Font Size */
+html {
+    font-size: 14px;
+}
+
+/* Increase font size for larger screens */
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Focus and Active States */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb; /* Blue focus box-shadow */
+}
+
+/* Body Styling */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px; /* To avoid footer overlap */
+}
+
+/* Styling for form */
+.container {
+    max-width: 900px; /* Limit container width */
+    margin: 0 auto; /* Center the form */
+    padding: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 1.5rem; /* Spacing between form groups */
+}
+
+/* Label Styling */
+.control-label {
+    font-weight: bold;
+    color: #333; /* Dark text for labels */
+    margin-bottom: 0.5rem;
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 0.25rem; /* Rounded edges for form controls */
+    box-shadow: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Styling for select input fields */
+.select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+}
+
+/* Styling the Buttons */
+.btn {
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+/* Button for "Back to List" */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+/* Error Message Styling */
+.text-danger {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    color: #dc3545; /* Red color for error messages */
+}
+
+/* Back to List Link Styling */
+.text-center a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+    .text-center a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }

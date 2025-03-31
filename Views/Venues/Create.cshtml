@@ -1,0 +1,65 @@
+﻿@model EventEase.Models.Venue
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <h1 class="text-center my-4">Create a New Venue</h1>
+
+    <h4 class="text-center text-secondary">Venue Information</h4>
+    <hr />
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <!-- Validation Summary -->
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <!-- Venue Name -->
+                <div class="form-group">
+                    <label asp-for="VenueName" class="control-label"></label>
+                    <input asp-for="VenueName" class="form-control" />
+                    <span asp-validation-for="VenueName" class="text-danger"></span>
+                </div>
+
+                <!-- Venue Location -->
+                <div class="form-group">
+                    <label asp-for="VenueLocaiton" class="control-label"></label>
+                    <input asp-for="VenueLocaiton" class="form-control" />
+                    <span asp-validation-for="VenueLocaiton" class="text-danger"></span>
+                </div>
+
+                <!-- Image URL -->
+                <div class="form-group">
+                    <label asp-for="Imagegurl" class="control-label"></label>
+                    <input asp-for="Imagegurl" class="form-control" />
+                    <span asp-validation-for="Imagegurl" class="text-danger"></span>
+                </div>
+
+                <!-- Capacity -->
+                <div class="form-group">
+                    <label asp-for="Capacity" class="control-label"></label>
+                    <input asp-for="Capacity" class="form-control" />
+                    <span asp-validation-for="Capacity" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary btn-lg">Create Venue</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to List Link -->
+    <div class="text-center mt-4">
+        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
