@@ -298,3 +298,4 @@ C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Debug\net8.0\refint
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Debug\net8.0\EventEase.pdb
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Debug\net8.0\EventEase.genruntimeconfig.cache
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Debug\net8.0\ref\EventEase.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Debug\net8.0\EventEase.sourcelink.json
