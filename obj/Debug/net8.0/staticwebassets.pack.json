@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\RC_Student_lab\\source\\repos\\EventEase\\EventEase\\wwwroot\\fonts\\Swansea-q3pd.ttf",
+      "PackagePath": "staticwebassets\\fonts\\Swansea-q3pd.ttf"
+    },
+    {
+      "Id": "C:\\Users\\RC_Student_lab\\source\\repos\\EventEase\\EventEase\\wwwroot\\fonts\\SwanseaBold-D0ox.ttf",
+      "PackagePath": "staticwebassets\\fonts\\SwanseaBold-D0ox.ttf"
+    },
+    {
+      "Id": "C:\\Users\\RC_Student_lab\\source\\repos\\EventEase\\EventEase\\wwwroot\\fonts\\SwanseaBoldItalic-p3Dv.ttf",
+      "PackagePath": "staticwebassets\\fonts\\SwanseaBoldItalic-p3Dv.ttf"
+    },
+    {
+      "Id": "C:\\Users\\RC_Student_lab\\source\\repos\\EventEase\\EventEase\\wwwroot\\fonts\\SwanseaItalic-AwqD.ttf",
+      "PackagePath": "staticwebassets\\fonts\\SwanseaItalic-AwqD.ttf"
+    },
+    {
       "Id": "C:\\Users\\RC_Student_lab\\source\\repos\\EventEase\\EventEase\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

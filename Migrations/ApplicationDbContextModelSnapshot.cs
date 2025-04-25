@@ -108,7 +108,7 @@ namespace EventEase.Migrations
             modelBuilder.Entity("EventEase.Models.Booking", b =>
                 {
                     b.HasOne("EventEase.Models.Event", "Event")
-                        .WithMany()
+                        .WithMany("Bookings")
                         .HasForeignKey("EventId");
 
                     b.HasOne("EventEase.Models.Venue", "Venue")
@@ -127,6 +127,11 @@ namespace EventEase.Migrations
                         .HasForeignKey("VenueId");
 
                     b.Navigation("Venue");
+                });
+
+            modelBuilder.Entity("EventEase.Models.Event", b =>
+                {
+                    b.Navigation("Bookings");
                 });
 #pragma warning restore 612, 618
         }

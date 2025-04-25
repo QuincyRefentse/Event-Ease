@@ -1,3 +1,11 @@
+/* Define the Custom Font */
+@font-face {
+    font-family: 'SwanseaBold';
+    src: url('/fonts/Swansea-q3pd.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* General Font Size */
 html {
     font-size: 14px;
@@ -22,15 +30,18 @@ html {
 }
 
 body {
+    font-family: 'SwanseaBold', sans-serif;
     margin-bottom: 60px; /* To avoid footer overlap */
 }
 
 /* Styling for form */
 .container {
-    max-width: 900px; /* Limit container width */
+    max-width: 100%; /* Limit container width */
     margin: 0 auto; /* Center the form */
-    padding: 20px;
+    padding-left: 20px; /* Add padding to the left */
+    padding-right: 20px; /* Add padding to the right */
 }
+
 
 /* Form Group Styling */
 .form-group {

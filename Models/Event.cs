@@ -22,5 +22,11 @@ namespace EventEase.Models
         public int? VenueId { get; set; }
         public Venue Venue { get; set; }
 
+        // ✅ Add this to fix your error (Bookings Navigation Property)
+        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+
+       // public List<Booking> Booking { get; set; }
+       // public List<Venue> Venues { get; set; }
+
     }
 }

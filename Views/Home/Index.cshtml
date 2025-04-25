@@ -1,30 +1,328 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using X.PagedList
+@model IPagedList<EventEase.Models.Event>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container-fluid py-5" style="padding-left: 0; padding-right: 0;">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-primary fw-bold">Welcome to EventEase</h1>
+        <p class="lead text-muted">Discover and book exciting events near you with ease.</p>
+    </div>
+
+    <!-- Search Section -->
+    <div class="text-center mb-4">
+        <form method="get" asp-action="Index">
+            <input type="text" name="searchTerm" class="form-control w-50 d-inline-block" placeholder="Search for events..." value="@ViewData["SearchTerm"]" />
+            <button type="submit" class="btn btn-primary ms-2">Search</button>
+        </form>
+    </div>
+
+    <!-- Display message if no events found -->
+    @if (Model.Count == 0)
+    {
+        <div class="text-center">
+            <p class="display-5 text-muted">No event, booking, or venue found. Please try a different search.</p>
+        </div>
+    }
+    else
+    {
+        <!-- Events Section -->
+        <h2 class="text-center mb-4 text-dark fw-semibold">Upcoming Events</h2>
+
+        <!-- Horizontal Scroll Section -->
+        <div class="events-wrapper" style="padding-left: 0; padding-right: 0;">
+            @foreach (var eventItem in Model)
+            {
+                <div class="event-card-container">
+                    <div class="card shadow-lg border-0 rounded-3 overflow-hidden event-card">
+                        @if (!string.IsNullOrEmpty(eventItem.Venue?.Imagegurl))
+                        {
+                            <img src="@eventItem.Venue.Imagegurl" class="card-img-top img-fluid" alt="Venue Image">
+                        }
+
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-primary">@eventItem.EventName</h5>
+                            <p class="card-text text-muted"><i class="bi bi-calendar-event"></i> @eventItem.EventDate.ToString("dddd, MMM d, yyyy")</p>
+                            <p class="text-dark">@eventItem.Description</p>
+
+                            <hr>
+
+                            <h6 class="text-muted"><i class="bi bi-geo-alt"></i> <strong>Venue:</strong> @eventItem.Venue?.VenueName</h6>
+                            <p class="text-muted"><i class="bi bi-map"></i> <strong>Location:</strong> @eventItem.Venue?.VenueLocaiton</p>
+
+                            @if (eventItem.Bookings.Any())
+                            {
+                                <h6 class="text-success"><i class="bi bi-check-circle"></i> Bookings</h6>
+                                <ul class="list-group small">
+                                    @foreach (var booking in eventItem.Bookings)
+                                    {
+                                        <li class="list-group-item text-muted bg-light border-0">
+                                            <i class="bi bi-clock"></i> @booking.BookingDate.ToString("MMM d, yyyy")
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p class="text-muted"><i class="bi bi-x-circle"></i> No bookings yet.</p>
+                            }
+
+                            <a href="#" class="btn btn-primary mt-3 w-100">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="d-flex justify-content-center mt-4">
+            @if (Model.HasPreviousPage)
+            {
+                <a href="@Url.Action("Index", new { page = Model.PageNumber - 1, searchTerm = ViewData["SearchTerm"] })" class="btn btn-outline-primary me-2">Previous</a>
+            }
+
+            @if (Model.HasNextPage)
+            {
+                <a href="@Url.Action("Index", new { page = Model.PageNumber + 1, searchTerm = ViewData["SearchTerm"] })" class="btn btn-outline-primary">Next</a>
+            }
+        </div>
+    }
+</div>
+
+<!-- Custom Styling -->
+<style>
+    .events-wrapper {
+        display: flex;
+        overflow-x: auto; /* Enables horizontal scrolling */
+        gap: 1rem; /* Space between the cards */
+        width: 100%; /* Ensures the wrapper spans the full width of the screen */
+        padding-bottom: 20px; /* Prevents cutting off cards at the bottom */
+    }
+
+    .event-card-container {
+        flex: 0 0 auto; /* Prevents the cards from stretching */
+        width: 20rem; /* Adjust the width of each card */
+    }
+
+    .event-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+    .bi {
+        margin-right: 5px;
+    }
+
+    /* Custom styles for the "No events found" message */
+    .display-5 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #6c757d; /* Muted grey color */
+        margin-top: 2rem;
+    }
+</style>
+
+
+
+@*
+
+@using X.PagedList
+@model IPagedList<EventEase.Models.Event>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container-fluid py-5" style="padding-left: 0; padding-right: 0;">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-primary fw-bold">Welcome to EventEase</h1>
+        <p class="lead text-muted">Discover and book exciting events near you with ease.</p>
+    </div>
+
+    <!-- Events Section -->
+    <h2 class="text-center mb-4 text-dark fw-semibold">Upcoming Events</h2>
+
+    <!-- Horizontal Scroll Section -->
+    <div class="events-wrapper" style="padding-left: 0; padding-right: 0;">
+        @foreach (var eventItem in Model)
+        {
+            <div class="event-card-container">
+                <div class="card shadow-lg border-0 rounded-3 overflow-hidden event-card">
+                    @if (!string.IsNullOrEmpty(eventItem.Venue?.Imagegurl))
+                    {
+                        <img src="@eventItem.Venue.Imagegurl" class="card-img-top img-fluid" alt="Venue Image">
+                    }
+
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-primary">@eventItem.EventName</h5>
+                        <p class="card-text text-muted"><i class="bi bi-calendar-event"></i> @eventItem.EventDate.ToString("dddd, MMM d, yyyy")</p>
+                        <p class="text-dark">@eventItem.Description</p>
+
+                        <hr>
+
+                        <h6 class="text-muted"><i class="bi bi-geo-alt"></i> <strong>Venue:</strong> @eventItem.Venue?.VenueName</h6>
+                        <p class="text-muted"><i class="bi bi-map"></i> <strong>Location:</strong> @eventItem.Venue?.VenueLocaiton</p>
+
+                        @if (eventItem.Bookings.Any())
+                        {
+                            <h6 class="text-success"><i class="bi bi-check-circle"></i> Bookings</h6>
+                            <ul class="list-group small">
+                                @foreach (var booking in eventItem.Bookings)
+                                {
+                                    <li class="list-group-item text-muted bg-light border-0">
+                                        <i class="bi bi-clock"></i> @booking.BookingDate.ToString("MMM d, yyyy")
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p class="text-muted"><i class="bi bi-x-circle"></i> No bookings yet.</p>
+                        }
+
+                        <a href="#" class="btn btn-primary mt-3 w-100">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="d-flex justify-content-center mt-4">
+        @if (Model.HasPreviousPage)
+        {
+            <a href="@Url.Action("Index", new { page = Model.PageNumber - 1 })" class="btn btn-outline-primary me-2">Previous</a>
+        }
+
+        @if (Model.HasNextPage)
+        {
+            <a href="@Url.Action("Index", new { page = Model.PageNumber + 1 })" class="btn btn-outline-primary">Next</a>
+        }
+    </div>
+</div>
+
+<!-- Custom Styling -->
+<style>
+    .events-wrapper {
+        display: flex;
+        overflow-x: auto; /* Enables horizontal scrolling */
+        gap: 1rem; /* Space between the cards */
+        width: 100%; /* Ensures the wrapper spans the full width of the screen */
+        padding-bottom: 20px; /* Prevents cutting off cards at the bottom */
+    }
+
+    .event-card-container {
+        flex: 0 0 auto; /* Prevents the cards from stretching */
+        width: 20rem; /* Adjust the width of each card */
+    }
+
+    .event-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+    .bi {
+        margin-right: 5px;
+    }
+</style>
+
+
+
+*@
+
+@*
+
+@model List<EventEase.Models.Event>
+
+@{
+    ViewData["Title"] = "Home";
 }
 
 <div class="container py-5">
+    <!-- style="position: absolute; top: 50px; left: 0; padding: 20px;" -->
+
+
+
     <!-- Hero Section -->
     <div class="text-center mb-5">
-        <h1 class="display-4 text-primary font-weight-bold">Welcome to Our Web Application</h1>
-        <p class="lead text-muted">Discover how to build powerful web applications with <strong>ASP.NET Core</strong>.</p>
+        <h1 class="display-4 text-primary fw-bold">Welcome to EventEase</h1>
+        <p class="lead text-muted">Discover and book exciting events near you with ease.</p>
     </div>
 
-    <!-- Information Section -->
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-lg border-light">
-                <div class="card-body">
-                    <h3 class="card-title">Start Building Today</h3>
-                    <p class="card-text">
-                        ASP.NET Core is a cross-platform, high-performance framework for building modern web applications.
-                        Whether you're building simple websites or complex systems, it's an ideal choice for both
-                        beginners and experts.
-                    </p>
-                    <a href="https://learn.microsoft.com/aspnet/core" class="btn btn-primary btn-lg" target="_blank">
-                        Learn More
-                    </a>
+    <!-- Events Section -->
+    <h2 class="text-center mb-4 text-dark fw-semibold">Upcoming Events</h2>
+
+    <div class="row">
+        @foreach (var eventItem in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg border-0 rounded-3 overflow-hidden event-card">
+                    @if (!string.IsNullOrEmpty(eventItem.Venue?.Imagegurl))
+                    {
+                        <img src="@eventItem.Venue.Imagegurl" class="card-img-top img-fluid" alt="Venue Image">
+                    }
+
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-primary">@eventItem.EventName</h5>
+                        <p class="card-text text-muted"><i class="bi bi-calendar-event"></i> @eventItem.EventDate.ToString("dddd, MMM d, yyyy")</p>
+                        <p class="text-dark">@eventItem.Description</p>
+
+                        <hr>
+
+                        <h6 class="text-muted"><i class="bi bi-geo-alt"></i> <strong>Venue:</strong> @eventItem.Venue?.VenueName</h6>
+                        <p class="text-muted"><i class="bi bi-map"></i> <strong>Location:</strong> @eventItem.Venue?.VenueLocaiton</p>
+
+                        @if (eventItem.Bookings.Any())
+                        {
+                            <h6 class="text-success"><i class="bi bi-check-circle"></i> Bookings</h6>
+                            <ul class="list-group small">
+                                @foreach (var booking in eventItem.Bookings)
+                                {
+                                    <li class="list-group-item text-muted bg-light border-0">
+                                        <i class="bi bi-clock"></i> @booking.BookingDate.ToString("MMM d, yyyy")
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p class="text-muted"><i class="bi bi-x-circle"></i> No bookings yet.</p>
+                        }
+
+                        <a href="#" class="btn btn-primary mt-3 w-100">Book Now</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </div>
+
+<!-- Custom Styling -->
+<style>
+    .event-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .bi {
+        margin-right: 5px;
+    }
+</style>
+
+*@
