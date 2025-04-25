@@ -6,6 +6,9 @@ C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubT
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\EventEase.pdb
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\Azure.Core.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\Azure.Storage.Blobs.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\Azure.Storage.Common.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\Carbon.PagedList.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\Humanizer.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Authorization.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\Microsoft.AspNetCore.Components.dll
@@ -76,6 +79,7 @@ C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubT
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\NuGet.ProjectModel.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\NuGet.Protocol.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\NuGet.Versioning.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\PageList.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.ClientModel.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.CodeDom.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.Composition.AttributedModel.dll
@@ -88,6 +92,7 @@ C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubT
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.Diagnostics.EventLog.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.Formats.Asn1.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.IO.Hashing.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.IO.Pipelines.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.Reflection.MetadataLoadContext.dll
@@ -95,6 +100,8 @@ C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubT
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.Text.Encodings.Web.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\System.Text.Json.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\X.PagedList.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\X.PagedList.EF.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\af\Humanizer.resources.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\ar\Humanizer.resources.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\PubTmp\Out\az\Humanizer.resources.dll

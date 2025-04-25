@@ -299,3 +299,10 @@ C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\Even
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\EventEase.genruntimeconfig.cache
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\ref\EventEase.dll
 C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\obj\Release\net8.0\EventEase.sourcelink.json
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\bin\Release\net8.0\Azure.Storage.Blobs.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\bin\Release\net8.0\Azure.Storage.Common.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\bin\Release\net8.0\Carbon.PagedList.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\bin\Release\net8.0\PageList.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\bin\Release\net8.0\System.IO.Hashing.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\bin\Release\net8.0\X.PagedList.dll
+C:\Users\RC_Student_lab\source\repos\EventEase\EventEase\bin\Release\net8.0\X.PagedList.EF.dll
