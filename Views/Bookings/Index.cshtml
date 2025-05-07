@@ -9,6 +9,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-action="Index" method="get" class="mb-3">
+    <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Search bookings..." class="form-control" style="width: 300px; display: inline-block; margin-right: 10px;" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -51,3 +57,8 @@
 }
     </tbody>
 </table>
+
+
+
+
+
