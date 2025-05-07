@@ -8,6 +8,105 @@
 {
     <div class="alert alert-danger">@TempData["Error"]</div>
 }
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<!-- Search Input and Button -->
+<div class="mb-3">
+    <input type="text" id="searchInput" placeholder="Search events..." class="form-control d-inline" style="width: 300px; display: inline-block;" />
+    <button type="button" class="btn btn-primary" onclick="filterEvents()">Search</button>
+</div>
+
+<table class="table" id="eventTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EventName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venue)
+            </th>
+
+
+            <th> @Html.DisplayNameFor(model => model.ImageEvent) </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="event-name">
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDate)
+                </td>
+                <td class="event-description">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="venue-name">
+                    @Html.DisplayFor(modelItem => item.Venue.ImageVenue)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Venue.ImageVenue))
+                    {
+                        <img src="@item.Venue.ImageVenue" alt="Venue Image" style="max-height: 100px; max-width: 150px;" />
+                    }
+                    else
+                    {
+                        <span>No image available</span>
+                    }
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.EventId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.EventId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.EventId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function filterEvents() {
+        var input = document.getElementById("searchInput").value.toLowerCase();
+        var rows = document.querySelectorAll("#eventTable tbody tr");
+
+        rows.forEach(function (row) {
+            var name = row.querySelector(".event-name").textContent.toLowerCase();
+            var description = row.querySelector(".event-description").textContent.toLowerCase();
+            var venue = row.querySelector(".venue-name").textContent.toLowerCase();
+
+            var match = name.includes(input) || description.includes(input) || venue.includes(input);
+            row.style.display = match ? "" : "none";
+        });
+    }
+</script>
+
+
+
+@* 
+@model IEnumerable<EventEase.Models.Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
 <h1>Index</h1>
 
 <p>
@@ -44,7 +143,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Venue.Imagegurl)
+                @Html.DisplayFor(modelItem => item.Venue.ImageVenue)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.EventId">Edit</a> |
@@ -55,3 +154,6 @@
 }
     </tbody>
 </table>
+
+
+                *@

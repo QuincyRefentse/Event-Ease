@@ -1,5 +1,4 @@
-﻿@*
-@model EventEase.Models.Booking
+﻿@model EventEase.Models.Booking
 
 @{
     ViewData["Title"] = "Create";
@@ -16,6 +15,11 @@
             <div class="form-group">
                 <label asp-for="EventId" class="control-label"></label>
                 <select asp-for="EventId" class ="form-control" asp-items="ViewBag.EventId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageBooking" class="control-label"></label>
+                <input asp-for="ImageBooking" class="form-control" />
+                <span asp-validation-for="ImageBooking" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="BookingDate" class="control-label"></label>
@@ -39,79 +43,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-
-*@
-
-@model EventEase.Models.Booking
-
-@{
-    ViewData["Title"] = "Create";
-}
-
-<div class="container">
-    <h1 class="text-center my-4">Create a Booking</h1>
-
-    <h4 class="text-center text-secondary">Booking Information</h4>
-    <hr />
-
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form asp-action="Create">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-                <!-- Validation Summary -->
-                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-
-                <!-- Event Selection -->
-                <div class="form-group">
-                    <label asp-for="EventId" class="control-label font-weight-bold"></label>
-                    <select asp-for="EventId" class="form-control">
-                        <option value="">-- Select Event --</option>
-                        @foreach (var eventItem in ViewBag.EventId as IEnumerable<SelectListItem>)
-                        {
-                            <option value="@eventItem.Value">@eventItem.Text</option>
-                        }
-                    </select>
-                    <span asp-validation-for="EventId" class="text-danger"></span>
-                </div>
-
-                <!-- Booking Date -->
-                <div class="form-group">
-                    <label asp-for="BookingDate" class="control-label font-weight-bold"></label>
-                    <input asp-for="BookingDate" class="form-control" type="date" />
-                    <span asp-validation-for="BookingDate" class="text-danger"></span>
-                </div>
-
-                <!-- Venue Selection -->
-                <div class="form-group">
-                    <label asp-for="VenueId" class="control-label font-weight-bold"></label>
-                    <select asp-for="VenueId" class="form-control">
-                        <option value="">-- Select Venue --</option>
-                        @foreach (var venueItem in ViewBag.VenueId as IEnumerable<SelectListItem>)
-                        {
-                            <option value="@venueItem.Value">@venueItem.Text</option>
-                        }
-                    </select>
-                    <span asp-validation-for="VenueId" class="text-danger"></span>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-lg">Create Booking</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Back to List Link -->
-    <div class="text-center mt-4">
-        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
-    </div>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
 }

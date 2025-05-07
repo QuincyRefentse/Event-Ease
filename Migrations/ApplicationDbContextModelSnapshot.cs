@@ -33,10 +33,14 @@ namespace EventEase.Migrations
                     b.Property<DateTime>("BookingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EventId")
+                    b.Property<int>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("VenueId")
+                    b.Property<string>("ImageBooking")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("VenueId")
                         .HasColumnType("int");
 
                     b.HasKey("BookingId");
@@ -67,6 +71,10 @@ namespace EventEase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageEvent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("VenueId")
                         .HasColumnType("int");
 
@@ -88,7 +96,7 @@ namespace EventEase.Migrations
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
-                    b.Property<string>("Imagegurl")
+                    b.Property<string>("ImageVenue")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -109,11 +117,15 @@ namespace EventEase.Migrations
                 {
                     b.HasOne("EventEase.Models.Event", "Event")
                         .WithMany("Bookings")
-                        .HasForeignKey("EventId");
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EventEase.Models.Venue", "Venue")
                         .WithMany()
-                        .HasForeignKey("VenueId");
+                        .HasForeignKey("VenueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Event");
 

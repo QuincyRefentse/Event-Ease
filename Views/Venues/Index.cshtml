@@ -8,6 +8,86 @@
 {
     <div class="alert alert-danger">@TempData["Error"]</div>
 }
+
+<h1>Venues</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<!-- Search Input and Button -->
+<div class="mb-3">
+    <input type="text" id="venueSearchInput" placeholder="Search venues..." class="form-control d-inline" style="width: 300px; display: inline-block;" />
+    <button type="button" class="btn btn-primary" onclick="filterVenues()">Search</button>
+</div>
+
+<table class="table" id="venueTable">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().VenueName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().VenueLocaiton)</th>
+            <th>Venue Image</th>
+            <th>@Html.DisplayNameFor(model => model.First().Capacity)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="venue-name">@item.VenueName</td>
+                <td class="venue-location">@item.VenueLocaiton</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageVenue))
+                    {
+                        <img src="@item.ImageVenue" alt="Venue Image" style="max-height: 100px; max-width: 150px;" />
+                    }
+                    else
+                    {
+                        <span>No image available</span>
+                    }
+                </td>
+                <td class="venue-capacity">@item.Capacity</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VenueId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.VenueId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VenueId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function filterVenues() {
+        var input = document.getElementById("venueSearchInput").value.toLowerCase();
+        var rows = document.querySelectorAll("#venueTable tbody tr");
+
+        rows.forEach(function (row) {
+            var name = row.querySelector(".venue-name").textContent.toLowerCase();
+            var location = row.querySelector(".venue-location").textContent.toLowerCase();
+            var capacity = row.querySelector(".venue-capacity").textContent.toLowerCase();
+
+            var match = name.includes(input) || location.includes(input) || capacity.includes(input);
+            row.style.display = match ? "" : "none";
+        });
+    }
+</script>
+
+
+
+@* 
+
+@model IEnumerable<EventEase.Models.Venue>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
 <h1>Index</h1>
 
 <p>
@@ -41,7 +121,7 @@
                 @Html.DisplayFor(modelItem => item.VenueLocaiton)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Imagegurl)
+                @Html.DisplayFor(modelItem => item.Imagegurl) 
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Capacity)
@@ -55,3 +135,65 @@
 }
     </tbody>
 </table>
+
+*@
+
+
+@* 
+
+@model IEnumerable<EventEase.Models.Venue>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<h1>Venues</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().VenueName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().VenueLocaiton)</th>
+            <th>Venue Image</th>
+            <th>@Html.DisplayNameFor(model => model.First().Capacity)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.VenueName</td>
+                <td>@item.VenueLocaiton</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageVenue))
+                    {
+                        <img src="@item.ImageVenue" alt="Venue Image" style="max-height: 100px; max-width: 150px;" />
+                    }
+                    else
+                    {
+                        <span>No image available</span>
+                    }
+                </td>
+                <td>@item.Capacity</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VenueId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.VenueId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VenueId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+*@
+

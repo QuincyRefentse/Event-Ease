@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EventEase.Data;
 using EventEase.Models;
 using X.PagedList;
+using BlobStorage.Services;  // Add BlobService namespace
 using X.PagedList.EF; // Required for pagination
 
 namespace EventEase.Controllers
@@ -15,10 +16,12 @@ namespace EventEase.Controllers
     public class EventsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly BlobService _blobService;  // Add BlobService dependency
 
-        public EventsController(ApplicationDbContext context)
+        public EventsController(ApplicationDbContext context, BlobService blobService)
         {
             _context = context;
+            _blobService = blobService;  // Initialize BlobService
         }
 
         // GET: Events
@@ -74,10 +77,17 @@ namespace EventEase.Controllers
         // POST: Events/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventId,EventName,EventDate,Description,VenueId")] Event @event)
+        public async Task<IActionResult> Create([Bind("EventId,EventName,EventDate,Description,VenueId")] Event @event, IFormFile ImageFile)
         {
             if (!ModelState.IsValid)
             {
+                if (ImageFile != null && ImageFile.Length > 0)
+                {
+                    // Upload image to blob storage
+                    string imageUrl = await _blobService.UploadFileAsync(ImageFile,"venue-images");
+                    @event.ImageEvent = imageUrl; // Save the URL to the database
+                }
+
                 _context.Add(@event);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

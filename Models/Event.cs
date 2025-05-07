@@ -18,6 +18,8 @@ namespace EventEase.Models
         [Required]
         public string Description { get; set; }
 
+        public string? ImageEvent { get; set; }
+
         [ForeignKey("VenueId")]
         public int? VenueId { get; set; }
         public Venue Venue { get; set; }

@@ -55,7 +55,7 @@ namespace EventEase.Controllers
         // POST: Venues/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VenueId,VenueName,VenueLocaiton,Imagegurl,Capacity")] Venue venue, IFormFile venueImage)
+        public async Task<IActionResult> Create([Bind("VenueId,VenueName,VenueLocaiton,ImageVenue,Capacity")] Venue venue, IFormFile venueImage)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace EventEase.Controllers
                 {
                     var fileName = $"{Guid.NewGuid()}{Path.GetExtension(venueImage.FileName)}"; // Generate unique filename
                     var imageUrl = await _blobService.UploadFileAsync(venueImage, "venue-images"); // Upload to Azure Blob Storage
-                    venue.Imagegurl = imageUrl; // Save image URL to the Venue model
+                    venue.ImageVenue = imageUrl; // Save image URL to the Venue model
                 }
 
                 _context.Add(venue);
@@ -107,7 +107,7 @@ namespace EventEase.Controllers
                     {
                         var fileName = $"{Guid.NewGuid()}{Path.GetExtension(venueImage.FileName)}"; // Generate unique filename
                         var imageUrl = await _blobService.UploadFileAsync(venueImage, "venue-images"); // Upload to Azure Blob Storage
-                        venue.Imagegurl = imageUrl; // Save new image URL to Venue model
+                        venue.ImageVenue = imageUrl; // Save new image URL to Venue model
                     }
 
                     _context.Update(venue);

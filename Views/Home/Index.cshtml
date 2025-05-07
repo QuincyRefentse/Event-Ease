@@ -8,7 +8,180 @@
 <div class="container-fluid py-5" style="padding-left: 0; padding-right: 0;">
     <!-- Hero Section -->
     <div class="text-center mb-5">
-        <h1 class="display-4 text-primary fw-bold">Welcome to EventEase</h1>
+        <h1 class="display-4 fw-bold text-gradient">🎉 Welcome to EventEase 🎉</h1>
+        <p class="lead text-muted">Find the most vibrant events, book with ease, and make memories that last forever.</p>
+    </div>
+
+    <!-- Search Section -->
+    <div class="text-center mb-4">
+        <form method="get" asp-action="Index" class="d-flex justify-content-center">
+            <input type="text" name="searchTerm" class="form-control search-box" placeholder="🔍 Search for events..." value="@ViewData["SearchTerm"]" />
+            <button type="submit" class="btn btn-party ms-2">Search</button>
+        </form>
+    </div>
+
+    <!-- Display message if no events found -->
+    @if (Model.Count == 0)
+    {
+        <div class="text-center">
+            <p class="display-5 text-muted">No event, booking, or venue found. Please try a different search.</p>
+        </div>
+    }
+    else
+    {
+        <!-- Events Section -->
+        <h2 class="text-center mb-4 text-dark fw-semibold">Upcoming Events</h2>
+
+        <!-- Horizontal Scroll Section -->
+        <div class="events-wrapper" style="padding-left: 0; padding-right: 0;">
+            @foreach (var eventItem in Model)
+            {
+                <div class="event-card-container">
+                    <div class="card shadow-lg border-0 rounded-3 overflow-hidden event-card">
+                        @if (!string.IsNullOrEmpty(eventItem.Venue?.ImageVenue))
+                        {
+                            <img src="@eventItem.Venue.ImageVenue" class="card-img-top img-fluid" alt="Venue Image">
+                        }
+
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-primary">@eventItem.EventName</h5>
+                            <p class="card-text text-muted"><i class="bi bi-calendar-event"></i> @eventItem.EventDate.ToString("dddd, MMM d, yyyy")</p>
+                            <p class="text-dark">@eventItem.Description</p>
+
+                            <hr>
+
+                            <h6 class="text-muted"><i class="bi bi-geo-alt"></i> <strong>Venue:</strong> @eventItem.Venue?.VenueName</h6>
+                            <p class="text-muted"><i class="bi bi-map"></i> <strong>Location:</strong> @eventItem.Venue?.VenueLocaiton</p>
+
+                            @if (eventItem.Bookings.Any())
+                            {
+                                <h6 class="text-success"><i class="bi bi-check-circle"></i> Bookings</h6>
+                                <ul class="list-group small">
+                                    @foreach (var booking in eventItem.Bookings)
+                                    {
+                                        <li class="list-group-item text-muted bg-light border-0">
+                                            <i class="bi bi-clock"></i> @booking.BookingDate.ToString("MMM d, yyyy")
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p class="text-muted"><i class="bi bi-x-circle"></i> No bookings yet.</p>
+                            }
+
+                            <a href="@Url.Action("Create", "Bookings")" class="btn btn-primary mt-3 w-100">Book Now</a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="d-flex justify-content-center mt-4">
+            @if (Model.HasPreviousPage)
+            {
+                <a href="@Url.Action("Index", new { page = Model.PageNumber - 1, searchTerm = ViewData["SearchTerm"] })" class="btn btn-outline-primary me-2">Previous</a>
+            }
+
+            @if (Model.HasNextPage)
+            {
+                <a href="@Url.Action("Index", new { page = Model.PageNumber + 1, searchTerm = ViewData["SearchTerm"] })" class="btn btn-outline-primary">Next</a>
+            }
+        </div>
+    }
+</div>
+
+<!-- Custom Styling -->
+<style>
+    .text-gradient {
+        background: linear-gradient(90deg, #003366, #00509e, #80d0ff, #87ceeb); /* Dark blue to baby blue gradient */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .search-box {
+        max-width: 800px;
+        padding: 0.75rem 1rem;
+        border-radius: 50px;
+        border: 2px solid #003366; /* Dark blue border */
+        outline: none;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 10px rgba(0, 51, 102, 0.3); /* Dark blue shadow */
+    }
+
+        .search-box:focus {
+            border-color: #003366; /* Dark blue */
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Sky blue focus glow */
+        }
+
+    .btn-party {
+        background: linear-gradient(135deg, #003366, #00509e); /* Dark blue to baby blue gradient */
+        border: none;
+        color: white;
+        padding: 0.6rem 1.25rem;
+        border-radius: 50px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0, 51, 102, 0.4); /* Dark blue shadow */
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+        .btn-party:hover {
+            background: linear-gradient(135deg, #00509e, #87ceeb); /* Blue to sky blue gradient on hover */
+            transform: scale(1.05);
+        }
+
+    .events-wrapper {
+        display: flex;
+        overflow-x: auto;
+        gap: 1rem;
+        width: 100%;
+        padding-bottom: 20px;
+    }
+
+    .event-card-container {
+        flex: 0 0 auto;
+        width: 20rem;
+    }
+
+    .event-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+    .bi {
+        margin-right: 5px;
+    }
+
+    .display-5 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #6c757d;
+        margin-top: 2rem;
+    }
+
+</style>
+
+
+
+@*
+
+@using X.PagedList
+@model IPagedList<EventEase.Models.Event>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container-fluid py-5" style="padding-left: 0; padding-right: 0;">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+         <!--- <h1 class="display-4 text-primary fw-bold">Welcome to EventEase</h1> -->
         <p class="lead text-muted">Discover and book exciting events near you with ease.</p>
     </div>
 
@@ -130,6 +303,8 @@
     }
 </style>
 
+
+*@
 
 
 @*

@@ -17,6 +17,12 @@
             @Html.DisplayFor(model => model.Event.Description)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageBooking)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImageBooking)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.BookingDate)
         </dt>
         <dd class = "col-sm-10">
@@ -26,7 +32,7 @@
             @Html.DisplayNameFor(model => model.Venue)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Venue.Imagegurl)
+            @Html.DisplayFor(model => model.Venue.VenueLocaiton)
         </dd>
     </dl>
 </div>

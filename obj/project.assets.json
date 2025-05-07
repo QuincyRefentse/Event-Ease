@@ -7656,19 +7656,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\RC_Student_lab\\.nuget\\packages\\": {}
+    "C:\\Users\\Refentse\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RC_Student_lab\\source\\repos\\EventEase\\EventEase\\EventEase.csproj",
+      "projectUniqueName": "C:\\Users\\Refentse\\Desktop\\Event-Ease\\EventEase.csproj",
       "projectName": "EventEase",
-      "projectPath": "C:\\Users\\RC_Student_lab\\source\\repos\\EventEase\\EventEase\\EventEase.csproj",
-      "packagesPath": "C:\\Users\\RC_Student_lab\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RC_Student_lab\\source\\repos\\EventEase\\EventEase\\obj\\",
+      "projectPath": "C:\\Users\\Refentse\\Desktop\\Event-Ease\\EventEase.csproj",
+      "packagesPath": "C:\\Users\\Refentse\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Refentse\\Desktop\\Event-Ease\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\RC_Student_lab\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Refentse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7688,7 +7693,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -7770,7 +7781,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

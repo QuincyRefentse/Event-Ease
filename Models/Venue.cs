@@ -12,8 +12,13 @@ namespace EventEase.Models
         public string VenueName { get; set; }
         [Required]
         public string VenueLocaiton { get; set; }
-        [Required]
-        public string Imagegurl { get; set; }
+
+        //[Required]
+       // public string? VenueImage { get; set;}
+
+
+        //[Required]
+        public string ImageVenue { get; set; }
 
         [Required]
         public int Capacity { get; set; }
