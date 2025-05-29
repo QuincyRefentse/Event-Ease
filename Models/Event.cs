@@ -20,6 +20,10 @@ namespace EventEase.Models
 
         public string? ImageEvent { get; set; }
 
+
+       
+       // public string ImageVenue { get; set; }
+
         [ForeignKey("VenueId")]
         public int? VenueId { get; set; }
         public Venue Venue { get; set; }
@@ -27,8 +31,13 @@ namespace EventEase.Models
         // ✅ Add this to fix your error (Bookings Navigation Property)
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
-       // public List<Booking> Booking { get; set; }
-       // public List<Venue> Venues { get; set; }
+        // public List<Booking> Booking { get; set; }
+        // public List<Venue> Venues { get; set; }
+
+        [ForeignKey("EventTypeId")]
+        public int? EventTypeId { get; set; }
+        public EventType EventType { get; set; }
+
 
     }
 }

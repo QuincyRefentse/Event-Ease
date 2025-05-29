@@ -20,7 +20,8 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.7",
           "PageList": "1.2.3",
           "X.PagedList": "10.5.7",
-          "X.PagedList.EF": "10.5.7"
+          "X.PagedList.EF": "10.5.7",
+          "X.PagedList.Mvc.Core": "10.5.7"
         },
         "runtime": {
           "EventEase.dll": {}
@@ -2168,6 +2169,17 @@
             "fileVersion": "10.5.7.0"
           }
         }
+      },
+      "X.PagedList.Mvc.Core/10.5.7": {
+        "dependencies": {
+          "X.PagedList": "10.5.7"
+        },
+        "runtime": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {
+            "assemblyVersion": "10.5.7.0",
+            "fileVersion": "10.5.7.0"
+          }
+        }
       }
     }
   },
@@ -3338,6 +3350,13 @@
       "sha512": "sha512-hHM3tzvhNHxJhQNH2ZVCPUCtnGFecljxLW9xHX94H5r/S/MgDJ20sHlty/i1TI0l2FiS8A03/oMXZBDrrpNoGg==",
       "path": "x.pagedlist.ef/10.5.7",
       "hashPath": "x.pagedlist.ef.10.5.7.nupkg.sha512"
+    },
+    "X.PagedList.Mvc.Core/10.5.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YuQEz9Y2AC8oaYk6yBISRxSpKuUEYLwoDpjimump8O+v4B2vZcigWQ6nEYE9blwmKLV0xGLy0S2zlbicvKCyPg==",
+      "path": "x.pagedlist.mvc.core/10.5.7",
+      "hashPath": "x.pagedlist.mvc.core.10.5.7.nupkg.sha512"
     }
   }
 }

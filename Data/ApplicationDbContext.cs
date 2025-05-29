@@ -19,7 +19,8 @@ namespace EventEase.Data
         // DbSet for the Venue entity (assuming it's defined elsewhere)
         public DbSet<Venue> Venues { get; set; }
 
-       
-     
+        public DbSet<EventType> EventTypes { get; set; }
+
+
     }
 }
